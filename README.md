@@ -1,11 +1,8 @@
 # WebApp-GA
 Abstract
 La dinamica delle popolazioni costituisce una branca delle scienze della vita che
-
 studia la composizione, in termini di dimensione ed età, di popolazioni di orga-
-
 nismi (incluso l'essere umano), viste come sistemi dinamici ed i relativi processi
-
 biologici ed ambientali che li guidano (ad esempio, tassi di natalità e di mortalità).
 In Ecologia, tali studi sono molto frequenti per una moltitudine di applicazioni
 e si basano essenzialmente (ma non solo) su modelli matriciali di popolazione.
