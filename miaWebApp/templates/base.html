@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block head_title %}UNICA PAGINA{% endblock head_title %}</title>
+    <!-- <h1>ALGORITMI GENETICI</h1> -->
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="{% static 'css/file.css' %}">
+    <script type="text/javascript" src="{% static 'js/charts.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/invioServer.js' %}"></script>
+
+</head>
+
+<body>
+    <!-- INIZIO BARRA DI NAVIGAZIONE -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+            <img src="{% static 'img/logo.png' %}" width="50" height="50" alt="">
+        </a>
+        <a class="navbar-brand" href="#">Home</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <!-- <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link" href="http://127.0.0.1:8000/profiloUtente/">Profilo</a>
+                </li>
+                <!-- <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="http://127.0.0.1:8000/login/">Logout</a>
+                </li>
+            </ul>
+            <!-- <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form> -->
+        </div>
+    </nav>
+    <!-- FINE BARRA DI NAVIGAZIONE -->
+
+    <!-- INIZIO PAGINAZIONE A DUE COLONNE -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+
+                <!-- CODICE PER GRAFICO -->
+                <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+                <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+                <!-- PER VISUALIZZARLO -->
+
+                <h3 id="test" class="text-left">
+                    DESCRIZIONE VALORI DA INSERIRE
+
+                </h3>
+                <dl>
+                    <dt>
+                        Tipo di algoritmo:
+                    </dt>
+                    <dd>
+                            <u>eaSimple:</u><br>
+                            L'algoritmo prende in considerazione una popolazione e la evolve al suo posto usando il metodo varAnd()*<br>
+                            <u>eaMuPlusLambda:</u><br>
+                            L'algoritmo prende in considerazione una popolazione e la evolve al suo posto utilizzando la funzione varOr()*
+                            come sopra solo che usa(crossover, mutazione o riproduzione)<br>
+                            <u>eaMuPlusLambda:</u><br>
+                            L'algoritmo prende in considerazione una popolazione e la evolve al suo posto utilizzando la funzione varOr()*
+                            come sopra solo che usa(crossover, mutazione o riproduzione)
+                    </dd>
+                    <dt>
+                        Tipo di dati:
+                    </dt>
+                    <dd>
+                        T:<br>
+                            Individui trattati con una soluzione senza laminarina(Acqua)<br>
+                        L50:<br>
+                            Individui trattati con soluzione di 50 ml/hl laminarina<br>
+                        L100:<br>
+                            Individui trattati con soluzione di 100 ml/hl laminarina
+                    </dd>
+                    <dt>
+                        Valore minimo
+                    </dt>
+                    <dd>
+                        Minimo valore assunto dai risultati.
+                    </dd>
+                    <dt>
+                        Valore massimo
+                    </dt>
+                    <dd>
+                        Massimo valore assunto dai risultati.
+                    </dd>
+
+                    <dt>
+                        Minimo strategia
+                    </dt>
+                    <dd>
+                        Valore minimo assunto dall'intera strategia evolutiva
+                    </dd>
+                    <dt>
+                        Massimo strategia
+                    </dt>
+                    <dd>
+                        Valore massimo assunto dall'intera strategia evolutiva
+                    </dd>
+                    <dt>
+                        Valore mutazione
+                    </dt>
+                    <dd>
+                        Numero di mutazioni di ogni progenie
+                    </dd>
+                    <dt>
+                        Probabilità crossover
+                    </dt>
+                    <dd>
+                        La probabilità che due individui vengano scambiati e quindi entrano in crossover
+                    </dd>
+                    <dt>
+                        Probabilità mutazione
+                    </dt>
+                    <dd>
+                        Probabilità che gli individui vengano mutati
+                    </dd>
+                    <dt>
+                        Individui per ogni selezione
+                    </dt>
+                    <dd>
+                        Numeri di individui massimo per la selezione.
+                    </dd>
+
+                    <dt>
+                        Grandezza popolazione
+                    </dt>
+                    <dd>
+                        Grandezza della popolazione, per cui si vuoi testare l'algoritmo.
+                        Più sarà grande questo valore, maggiore sarà il tempo complessivo dell'algoritmo.
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-md-4">
+
+                <form id="form" metod="post" action="" role="form-group">
+                    <!-- <label for="exampleFormControlSelect1">Tipo Grafico</label>
+                    <select class="form-control form-control-sm" name="tipoGrafico">
+                        <option>Multi Serie Chart</option>
+                        <option>Spline Chart</option>
+                        <option>Dynamic Line Chart</option>
+                    </select> -->
+
+                    <label for="exampleFormControlSelect1"><b>Seleziona algoritmo: </b></label>
+                    <select class="form-control form-control-sm" name="tipoAlgoritmo">
+                        <option>eaSimple</option>
+                        <option>eaMuPlusLambda</option>
+                        <option>eaMuCommaLambda</option>
+                    </select>
+
+                    <label for="exampleFormControlSelect1"><b>Tipo di dati: </b></label>
+                    <br>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="dati" id="inlineRadio1" value="T">
+                        <label class="form-check-label" for="inlineRadio1">T</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="dati" id="inlineRadio2" value="L50">
+                        <label class="form-check-label" for="inlineRadio2">L50</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="dati" id="inlineRadio2" value="L100">
+                        <label class="form-check-label" for="inlineRadio2">L100</label>
+                    </div>
+                    
+                    <br>
+                    <label for="exampleFormControlSelect1"><b>Valore Minimo</b></label>
+                    <input name="min_value" type="text" class="form-control form-control-sm" placeholder="Ex. 0">
+
+                    <label for="exampleFormControlSelect1"><b>Valore Massimo</b></label>
+                    <input name="max_value" class="form-control form-control-sm" type="text" placeholder="Ex. 1">
+
+                    <label for="exampleFormControlSelect1"><b>Minimo Strategia</b></label>
+                    <input name="min_strategy" class="form-control form-control-sm" type="text" placeholder="Ex. 0.5">
+
+                    <label for="exampleFormControlSelect1"><b>Massimo Strategia</b></label>
+                    <input name="max_strategy" class="form-control form-control-sm" type="text" placeholder="Ex. 3">
+
+                    <label for="exampleFormControlSelect1"><b>Valore Mutazione</b></label>
+                    <input name="mutation" class="form-control form-control-sm" type="text" placeholder="Ex. 100">
+
+                    <label for="exampleFormControlSelect1"><b>Probabilità crossover</b></label>
+                    <input name="cxpb" class="form-control form-control-sm" type="text" placeholder="Ex. 0.6">
+
+                    <label for="exampleFormControlSelect1"><b>Probabilità mutazione</b></label>
+                    <input name="mutpb" class="form-control form-control-sm" type="text" placeholder="Ex. 0.3">
+
+                    <label for="exampleFormControlSelect1"><b>Individui ogni selezione</b></label>
+                    <input name="value_tournSize" class="form-control form-control-sm" type="text" placeholder="Ex. 3">
+
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1"><b>Grandezza Popolazione</b></label>
+                        <select name="pop_size" class="form-control form-control-sm">
+                            <option>100</option>
+                            <option>200</option>
+                            <option>300</option>
+                            <option>400</option>
+                            <option>500</option>
+                            <option>600</option>
+                            <option>700</option>
+                            <option>800</option>
+                            <option>900</option>
+                        </select>
+                    </div>
+                    <center>
+                        <button id="submit" type="button" name="submit" class="btn btn-primary">
+                            CONFERMA
+                        </button>
+                    </center>
+                </form>
+
+
+
+            </div>
+        </div>
+    </div>
+    <!-- FINE PAGINAZIONE A DUE COLONNE -->
+</body>
+
+</html>

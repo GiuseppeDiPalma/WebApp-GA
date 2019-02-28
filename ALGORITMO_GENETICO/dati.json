@@ -1,0 +1,13 @@
+{
+    "tipoAlgoritmo":"eaMuPlusLambda",
+    "dati":"L100",
+    "min_value":"0",
+    "max_value":"1",
+    "min_strategy":"0.3",
+    "max_strategy":"0.2",
+    "mutation":"10",
+    "cxpb":"0.5",
+    "mutpb":"0.3",
+    "value_tournSize":"3",
+    "pop_size":"100"
+}
